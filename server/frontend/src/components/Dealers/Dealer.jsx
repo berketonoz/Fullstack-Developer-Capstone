@@ -55,7 +55,9 @@ const Dealer = () => {
   }
 
   const senti_icon = (sentiment)=>{
-    let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
+    let icon = sentiment === "positive" ? positive_icon : 
+      sentiment === "negative" ? negative_icon : 
+      neutral_icon;
     console.log("ICON: ", icon);
     console.log(reviews);
     return icon;
