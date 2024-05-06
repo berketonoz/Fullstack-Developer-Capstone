@@ -24,7 +24,6 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 def get_cars(request):
     count = CarMake.objects.filter().count()
-    print(count)
     if(count == 0):
         initiate()
     car_models = CarModel.objects.select_related('car_make')
@@ -102,13 +101,11 @@ def get_dealerships(request, state="All"):
 # ...
 def get_dealer_reviews(request,dealer_id):
     if(dealer_id):
-        endpoint = '/fetchReviews/dealer/' + dealer_id
+        endpoint = '/fetchReviews/dealer/' + str(dealer_id)
         reviews = get_request(endpoint)
         for review in reviews:
-            response = analyze_review_sentiments(review["review"])
-            print(response)
-            review["sentiment"] = response["sentiment"]
-        return JsonResponse({"reviews": reviews}) #{"status":200, "reviews": reviews})
+            review["sentiment"] = analyze_review_sentiments(review["review"])
+        return JsonResponse({"status":200, "reviews": reviews})
     else:
         return JsonResponse({"status":400, "reviews": "Bad Request"})
 
@@ -118,7 +115,7 @@ def get_dealer_reviews(request,dealer_id):
 # ...
 def get_dealer_details(request,dealer_id):
     if(dealer_id):
-        endpoint = '/fetchDealer/' + dealer_id
+        endpoint = '/fetchDealer/' + str(dealer_id)
         dealer = get_request(endpoint)
         return JsonResponse({"status":200, "dealer": dealer})
     else:

@@ -9,7 +9,7 @@ backend_url = os.getenv(
     'backend_url', default="http://localhost:3030")
 sentiment_analyzer_url = os.getenv(
     'sentiment_analyzer_url',
-    default="http://127.0.0.1:5000")
+    default="http://localhost:5000")
 
 def get_request(endpoint, **kwargs):
     params = ""
@@ -36,7 +36,7 @@ def analyze_review_sentiments(text):
     try:
         # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
-        return response.json()
+        return response.json()["sentiment"]
     except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
         print("Network exception occurred")
