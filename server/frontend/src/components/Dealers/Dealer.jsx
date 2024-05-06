@@ -37,10 +37,11 @@ const Dealer = () => {
   }
 
   const get_reviews = async ()=>{
-    const res = await fetch(reviews_url, {
+    const retobj = await fetch(reviews_url, {
       method: "GET"
-    });
-    const retobj = await res.json();
+    }).then(res => (
+      res.json()
+    ));
     
     if(retobj.status === 200) {
       if(retobj.reviews.length > 0){
@@ -48,11 +49,15 @@ const Dealer = () => {
       } else {
         setUnreviewed(true);
       }
+    } else {
+      console.log({"status": retobj.status, "message": "Return object didn't return 200 status code!"});
     }
   }
 
   const senti_icon = (sentiment)=>{
     let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
+    console.log("ICON: ", icon);
+    console.log(reviews);
     return icon;
   }
 
