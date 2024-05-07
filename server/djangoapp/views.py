@@ -1,5 +1,5 @@
 """views.py import statements"""
-#from django.shortcuts import render
+# from django.shortcuts import render
 # from django.http import HttpResponseRedirect, HttpResponse
 import logging
 import json
@@ -31,7 +31,7 @@ def get_cars(request):
     for car_model in car_models:
         cars.append(
             {
-                "CarModel": car_model.name, 
+                "CarModel": car_model.name,
                 "CarMake": car_model.car_make.name
             })
     return JsonResponse({ "CarModels": cars})
@@ -86,13 +86,13 @@ def registration(request):
     if not username_exist:
         # Create user in auth_user table
         user = User.objects.create_user(
-            username = username,
-            first_name = first_name,
-            last_name = last_name,
-            password = password,
-            email = email )
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+            email=email)
         # Login the user and redirect to list page
-        login( request, user )
+        login(request, user)
         data = {"userName": username, "status": "Authenticated"}
     else:
         data = {"userName": username, "error": "Already Registered"}
@@ -100,16 +100,14 @@ def registration(request):
 
 
 def get_dealerships(request, state = "All"):
-    """Update the `get_dealerships` view to render the index page with 
-    a list of dealerships Update the `get_dealerships` render list of 
-    dealerships all by default, particular state if state is passed"""
+    """get_dealerships function for handling /dealers(/:id) route"""
     print(request)
     if state == "All":
         endpoint = "/fetchDealers"
     else:
         endpoint = "/fetchDealers/" + state
     dealerships = get_request(endpoint)
-    return JsonResponse({ "status": 200, "dealers": dealerships })
+    return JsonResponse( { "status": 200, "dealers": dealerships } )
 
 
 def get_dealer_reviews(request, dealer_id):
@@ -124,7 +122,7 @@ def get_dealer_reviews(request, dealer_id):
     return JsonResponse({"status": 400, "reviews": "Bad Request"})
 
 
-def get_dealer_details(request,dealer_id):
+def get_dealer_details(request, dealer_id):
     """get_dealer_details function for handling /dealer/:id route"""
     print(request)
     if dealer_id:
@@ -145,4 +143,3 @@ def add_review(request):
             return JsonResponse({"status": 401, "message": e})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
-    

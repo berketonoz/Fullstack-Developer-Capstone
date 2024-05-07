@@ -35,9 +35,9 @@ urlpatterns = [
     # Dealers route
     path('dealers/', TemplateView.as_view(template_name="index.html")),
     # Dealer route
-    path('dealer/<int:dealer_id>', 
-        TemplateView.as_view(template_name="index.html")),
+    path('dealer/<int:dealer_id>',
+         TemplateView.as_view(template_name="index.html")),
     # Post Review route
-    path('postreview/<int:dealer_id>', 
-        TemplateView.as_view(template_name="index.html")),
+    path('postreview/<int:dealer_id>',
+          TemplateView.as_view(template_name="index.html")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
