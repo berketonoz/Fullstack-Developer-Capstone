@@ -11,6 +11,7 @@ backend_url = os.getenv(
 sentiment_analyzer_url = os.getenv(
     'sentiment_analyzer_url', default="http://localhost:5000")
 
+
 def get_request(endpoint, **kwargs):
     """get_request function for handling the get endpoints and api requests"""
     params = ""
