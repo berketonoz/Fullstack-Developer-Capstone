@@ -18,13 +18,13 @@ class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     CAR_TYPES = [
-        ('SEDAN','Sedan'),
-        ('SUV','SUV'),
-        ('CONVERTIBLE','Convertible'),
-        ('HATCHBACK','Hatchback'),
-        ('COUPE','Coupe'),
-        ('MINIVAN','Minivan'),
-        ('PICKUP','Pickup'),
+        ('SEDAN','Sedan'), 
+        ('SUV','SUV'), 
+        ('CONVERTIBLE','Convertible'), 
+        ('HATCHBACK','Hatchback'), 
+        ('COUPE','Coupe'), 
+        ('MINIVAN','Minivan'), 
+        ('PICKUP','Pickup'), 
     ]
     type = models.CharField(
         max_length=11,
@@ -45,5 +45,4 @@ class CarModel(models.Model):
             ])
 
     def __str__(self):
-        return str(self.name)  # Return the name as the string representation
-    
+        return str(self.name) # Return the name as the string representation
