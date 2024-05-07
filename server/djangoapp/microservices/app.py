@@ -1,6 +1,7 @@
+"""app.py import statements"""
+import json
 from flask import Flask
 from nltk.sentiment import SentimentIntensityAnalyzer
-import json
 app = Flask("Sentiment Analyzer")
 
 sia = SentimentIntensityAnalyzer()
@@ -8,13 +9,14 @@ sia = SentimentIntensityAnalyzer()
 
 @app.get('/')
 def home():
+    """home function for handling / route"""
     return "Welcome to the Sentiment Analyzer. \
-    Use /analyze/text to get the sentiment"
+        Use /analyze/text to get the sentiment"
 
 
 @app.get('/analyze/<input_txt>')
 def analyze_sentiment(input_txt):
-
+    """analyze_sentiment function for calculating sentiment scores"""
     scores = sia.polarity_scores(input_txt)
     print(scores)
     pos = float(scores['pos'])
