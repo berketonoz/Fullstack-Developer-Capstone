@@ -5,11 +5,11 @@ from .models import CarMake, CarModel
 def initiate():
     """initiate function for populating car model tables"""
     car_make_data = [
-        {"name":"NISSAN", "description":"Great cars. Japanese technology"}, 
-        {"name":"Mercedes", "description":"Great cars. German technology"}, 
-        {"name":"Audi", "description":"Great cars. German technology"}, 
-        {"name":"Kia", "description":"Great cars. Korean technology"}, 
-        {"name":"Toyota", "description":"Great cars. Japanese technology"}, 
+        { "name": "NISSAN", "description": "Great cars. Japanese technology" }, 
+        { "name": "Mercedes", "description": "Great cars. German technology" }, 
+        { "name": "Audi", "description": "Great cars. German technology" }, 
+        { "name": "Kia", "description": "Great cars. Korean technology" }, 
+        { "name": "Toyota", "description": "Great cars. Japanese technology" }, 
     ]
 
     car_make_instances = []
@@ -22,7 +22,7 @@ def initiate():
     car_model_data = [
         {
           "name": "Pathfinder",
-          "type": "SUV",
+          "type": "SUV", 
           "year": 2023,
           "car_make": car_make_instances[0],
         },
