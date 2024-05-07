@@ -34,7 +34,7 @@ def get_cars(request):
                 "CarModel": car_model.name,
                 "CarMake": car_model.car_make.name
             })
-    return JsonResponse({ "CarModels": cars })
+    return JsonResponse({"CarModels": cars})
 
 
 @csrf_exempt
@@ -107,7 +107,7 @@ def get_dealerships(request, state="All"):
     else:
         endpoint = "/fetchDealers/" + state
     dealerships = get_request(endpoint)
-    return JsonResponse({ "status": 200, "dealers": dealerships })
+    return JsonResponse({"status": 200, "dealers": dealerships})
 
 
 def get_dealer_reviews(request, dealer_id):
