@@ -1,5 +1,3 @@
-# coding-project-template
-
 # Fullstack Developer Capstone
 
 This repository contains the Fullstack Developer Capstone project, demonstrating the skills and knowledge acquired during the fullstack development course.
